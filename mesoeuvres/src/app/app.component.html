@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestion des Oeuvres</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Gestion Oeuvres</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/oeuvres">Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Oeuvres
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Ajouter</a></li>
+              <li><a class="dropdown-item" *ngIf="keycloakService.getUserRoles().includes('ADMIN')" routerLink="/oeuvres">Lister</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <ng-container *ngIf="profile; else notLoggedIn">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{profile.username}}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+              </ul>
+            </ng-container>
+            <ng-template #notLoggedIn>
+              <button class="btn btn-success" (click)="onLogin()">Login</button>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</body>
+</html>

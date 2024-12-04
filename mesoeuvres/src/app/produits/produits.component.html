@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Id oeuvre</th>
+            <th>Titre</th>
+            <th>Artiste</th>
+            <th>Date Création</th>
+            <th>Catégorie</th>
+            <th>Dimensions</th>
+            <th>Description</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oeuvre of produits">
+            <td>{{oeuvre.idOeuvre}}</td>
+            <td>{{oeuvre.titre}}</td>
+            <td>{{oeuvre.artiste}}</td>
+            <td>{{oeuvre.dateCreation}}</td>
+            <td>{{oeuvre.categorie}}</td>
+            <td>{{oeuvre.dimensions}}</td>
+            <td>{{oeuvre.description}}</td>
+            <td>{{oeuvre.prix}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
